@@ -4,7 +4,7 @@ db.Model.metadata.reflect(db.engine)
 
 
 class Registrations(db.Model):
-    __table__ = db.Model.metadata.tables['registrations']
+    __table__ = db.Model.metadata.tables["registrations"]
 
     # id = db.Column(db.Integer, primary_key=True)
     # first_name = db.Column(db.Text, nullable=False)
@@ -22,9 +22,8 @@ class Registrations(db.Model):
 
 
 class Sponsors(db.Model):
-    __table__ = db.Model.metadata.tables['sponsors']
+    __table__ = db.Model.metadata.tables["sponsors"]
 
     # name = db.Column(db.Text, nullable=False)
     # amount = db.Column(db.Integer, nullable=False)
     # region_name = db.Column(db.Text, nullable=False)
-

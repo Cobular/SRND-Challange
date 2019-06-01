@@ -14,9 +14,11 @@ Early Birds:
     {% endfor %}
 </ul>
 Promos:
-{% for i in  promos %}
-    Promo {{ i.text }}: {{ i.uses }}
-{% endfor %}
+<ol>
+    {% for i in  promos %}
+        <li>{{ i[0] }}: {{ i[1] }}</li>
+    {% endfor %}
+</ol>
 <br>
 Registrations:
 <ul>

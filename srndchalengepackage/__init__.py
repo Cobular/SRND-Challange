@@ -15,12 +15,13 @@ def create_app(config_class=Config):
     db.init_app(app)
 
     from srndchalengepackage.main import bp
+
     app.register_blueprint(bp)
 
     # a simple page that says hello
-    @app.route('/hello')
+    @app.route("/hello")
     def hello():
-        return 'Hello, World!'
+        return "Hello, World!"
 
     return app
 
