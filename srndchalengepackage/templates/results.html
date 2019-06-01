@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>All the Data</title>
+</head>
+<body>
+Made/Lost: {{ netcosts }}
+<br>
+Early Birds: {{ earlybirds }}
+<br>
+Promos:
+{% for i in  promos %}
+Promo {{i.text}}: {{i.uses}}
+{% endfor %}
+<br>
+{% for event in events %}
+Attendees registered: {{ event.attendees }}
+Attendees checked in: {{ event.checkedin }}
+Percentage: {{ event.checkedin/event.attendees }}
+{% endfor %}
+</body>
+</html>
