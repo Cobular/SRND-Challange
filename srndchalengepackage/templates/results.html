@@ -5,19 +5,28 @@
     <title>All the Data</title>
 </head>
 <body>
-Made/Lost: {{ netcosts }}
+Made/Lost: {{ "${:,.2f}".format(netcosts/100) }}
 <br>
-Early Birds: {{ earlybirds }}
-<br>
+Early Birds:
+<ul>
+    {% for region, early in earlybirds.items() %}
+        <li> {{ region }}: {{ early }}
+    {% endfor %}
+</ul>
 Promos:
 {% for i in  promos %}
-Promo {{i.text}}: {{i.uses}}
+    Promo {{ i.text }}: {{ i.uses }}
 {% endfor %}
 <br>
-{% for event in events %}
-Attendees registered: {{ event.attendees }}
-Attendees checked in: {{ event.checkedin }}
-Percentage: {{ event.checkedin/event.attendees }}
-{% endfor %}
+Registrations:
+<ul>
+    {% for event in events %}
+        <li>
+            Attendees registered: {{ event.attendees }}
+            Attendees checked in: {{ event.checkedin }}
+            Percentage: {{ event.checkedin/event.attendees }}
+        </li>
+    {% endfor %}
+</ul>
 </body>
 </html>

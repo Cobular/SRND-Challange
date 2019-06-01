@@ -20,8 +20,11 @@ class Registrations(db.Model):
     def __repr__(self):
         return self.first_name
 
-#
-# class Sponsors(db.Model):
-#     name = db.Column(db.Text, nullable=False)
-#     amount = db.Column(db.Integer, nullable=False)
-#     region_name = db.Column(db.Text, nullable=False)
+
+class Sponsors(db.Model):
+    __table__ = db.Model.metadata.tables['sponsors']
+
+    # name = db.Column(db.Text, nullable=False)
+    # amount = db.Column(db.Integer, nullable=False)
+    # region_name = db.Column(db.Text, nullable=False)
+
