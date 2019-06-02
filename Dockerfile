@@ -8,7 +8,7 @@ COPY requirements.txt requirements.txt
 RUN pip install -r requirements.txt
 RUN pip install gunicorn
 
-COPY srndchalengepackage srndchalengepackage
+COPY srndchallengepackage srndchalengepackage
 COPY run.py config.py run.sh codeday.db3 ./
 RUN chmod +x run.sh
 
