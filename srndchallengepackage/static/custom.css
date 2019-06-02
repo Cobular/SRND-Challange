@@ -11,6 +11,8 @@ body {
 
 .jumbotron {
     background: #FF686B;
+    border-bottom-left-radius: 30%;
+    border-bottom-right-radius: 30%;
 }
 
 .jumbotron h1 {
@@ -43,4 +45,14 @@ h4.panel-title {
 
 .panel-body {
     background: #FFFFFF;
+}
+
+.flex-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.flex-container > [class*='col-']{
+    display: flex;
+    flex-direction: column;
 }

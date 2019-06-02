@@ -3,7 +3,7 @@
 {% block panel_title %}Registrations:{% endblock %}
 {% block panel_content %}
             {% for event in registration_info %}
-                    {{ event.region_name }}:
+                    {{ event.region_name|catch_overall }}:
                     <ul>
                         <li>Attendees registered: {{ event.num_checked_in }}</li>
                         <li>Attendees checked in: {{ event.num_registered }}</li>

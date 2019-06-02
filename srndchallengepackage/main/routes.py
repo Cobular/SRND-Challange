@@ -2,19 +2,14 @@ from flask import render_template
 from sqlalchemy.sql import label
 from sqlalchemy.sql.functions import sum, count
 
-from srndchalengepackage.main import bp
+from srndchallengepackage.main import bp
 import datetime as dt
 
 
 @bp.route("/")
-def hello_world():
-    return "Hello World!"
-
-
-@bp.route("/data")
 def data():
-    from srndchalengepackage.models import Registrations as Reg, Sponsors
-    from srndchalengepackage import db
+    from srndchallengepackage.models import Registrations as Reg, Sponsors
+    from srndchallengepackage import db
 
     # Some stuff that's useful in a few places:
     region_list = (
@@ -60,11 +55,21 @@ def data():
     # Calculates the promo related info
     # Returns the number of uses of each promo code
     promo_data = (
-        db.session.query(Reg.promo_code, count(Reg.promo_code).label("num_uses"))
+        db.session.query(
+            Reg.promo_code, count(1).label("num_uses")
+        )  # Returns code:count, does count none
         .group_by(Reg.promo_code)
-        .order_by(count(Reg.promo_code).desc())
+        .order_by(
+            count(Reg.promo_code).desc()
+        )  # does NOT count none here, so none iwll always be last
         .all()
     )
+
+    promo_code_names = []
+    promo_code_uses = []
+    for element in promo_data:
+        promo_code_names.append(element.promo_code)
+        promo_code_uses.append(element.num_uses)
     print(promo_data)
 
     # ------------------------------------------------------------------------------------------------------------------
@@ -82,7 +87,7 @@ def data():
     checked_registered_data = (
         checked_registered_data
         + db.session.query(
-            Reg.first_name,
+            Reg.first_name,  # Need to get the text "Overall" into this field
             count(Reg.checked_in_at).label("num_checked_in"),
             count(Reg.registered_at).label("num_registered"),
         ).all()

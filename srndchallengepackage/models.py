@@ -1,4 +1,4 @@
-from srndchalengepackage import db
+from srndchallengepackage import db
 
 db.Model.metadata.reflect(db.engine)
 

@@ -17,7 +17,7 @@ def create_app(config_class=Config):
     db.init_app(app)
     bootstrap.init_app(app)
 
-    from srndchalengepackage.main import bp
+    from srndchallengepackage.main import bp
 
     app.register_blueprint(bp)
 
@@ -29,4 +29,4 @@ def create_app(config_class=Config):
     return app
 
 
-from srndchalengepackage import db
+from srndchallengepackage import db

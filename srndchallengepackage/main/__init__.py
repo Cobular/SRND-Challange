@@ -2,4 +2,4 @@ from flask import Blueprint
 
 bp = Blueprint("main", __name__)
 
-from srndchalengepackage.main import routes
+from srndchallengepackage.main import routes
