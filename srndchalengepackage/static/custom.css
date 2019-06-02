@@ -1,0 +1,46 @@
+/* This is where I can put custom css to overrite the defaults, if I can figure it out */
+@import url("https://f1.srnd.org/fonts/avenir-next/minimal.css");
+
+* {
+    font-family: "Avenir Next", sans-serif;
+}
+
+body {
+    background: #E6E6E6 !important;
+}
+
+.jumbotron {
+    background: #FF686B;
+}
+
+.jumbotron h1 {
+    color: #FFFFFF;
+    font-weight: bold;
+}
+
+.name {
+    color: #FFFFFF;
+}
+
+.panel-default {
+    border-color: #3F97CC;
+    border-width: 1.25pt;
+    background: #BDBDBD;
+}
+
+.panel-default > .panel-heading {
+    background: #BDBDBD;
+}
+
+.panel-default > .panel-body {
+    color: #484848;
+}
+
+h4.panel-title {
+    color: #484848;
+    font-weight: bold;
+}
+
+.panel-body {
+    background: #FFFFFF;
+}

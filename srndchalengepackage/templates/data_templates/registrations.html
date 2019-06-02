@@ -1,0 +1,14 @@
+{% extends "data_templates/panel.html" %}
+
+{% block panel_title %}Registrations:{% endblock %}
+{% block panel_content %}
+            {% for event in registration_info %}
+                    {{ event.region_name }}:
+                    <ul>
+                        <li>Attendees registered: {{ event.num_checked_in }}</li>
+                        <li>Attendees checked in: {{ event.num_registered }}</li>
+                        <li>% No-Show: {{ "{:.2f}%".format(event.num_checked_in/event.num_registered) }}</li>
+                    </ul>
+                <hr>
+            {% endfor %}
+{% endblock %}

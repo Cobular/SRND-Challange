@@ -1,0 +1,10 @@
+{% extends "data_templates/panel.html" %}
+
+{% block panel_title %}Early Birds:{% endblock %}
+{% block panel_content %}
+        <ul>
+            {% for region, attendees in earlybirds.items() %}
+                <li> {{ region }}: {{ attendees[0] }}/{{ attendees[1] }}
+            {% endfor %}
+        </ul>
+{% endblock %}

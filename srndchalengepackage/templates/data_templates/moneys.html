@@ -1,0 +1,6 @@
+{% extends "data_templates/panel.html" %}
+
+{% block panel_title %}Made/Lost:{% endblock %}
+{% block panel_content %}
+        {{ "${:,.2f}".format(netcosts/100) }}
+{% endblock %}

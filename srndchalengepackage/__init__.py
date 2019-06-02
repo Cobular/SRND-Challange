@@ -2,10 +2,12 @@ import os
 
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+from flask_bootstrap import Bootstrap
 
 from config import Config
 
 db = SQLAlchemy()
+bootstrap = Bootstrap()
 
 
 def create_app(config_class=Config):
@@ -13,6 +15,7 @@ def create_app(config_class=Config):
     app.config.from_object(config_class)
 
     db.init_app(app)
+    bootstrap.init_app(app)
 
     from srndchalengepackage.main import bp
 
