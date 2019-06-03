@@ -8,11 +8,15 @@ This uses docker-compose for deployment, so first make sure you have both docker
 
 1. Make sure to set the `$SQLALCHEMY_DATABASE_URI` environmental variable **if** the database file is anywhere but in the root of the project (right next to this file). 
 2. Just run `docker-compose up` and the service will start. 
-3. If you want to run the app outside the docker container, there are a few more steps:
-    1. Setup a venv and install the requirements from requirements.txt
+3. If you want to run the app outside the docker container w/ `flask run`, there are a few more steps:
+    1. Setup a venv (`python3 -m venv ./venv`, `source venv/bin/activate`) and install the requirements from requirements.txt (`pip install -r requirements.txt`)
     2. Set the `$FLASK_APP` environmental variable to `run` so the next command will know where to look to start the aoo
     3. Run the command `flask run`. You can add the optional arguments `-h localhost` and `-p 8080` to the end of the command to change the address and port the app is listening on.  
-4. Happy data viewing!
+4. You can also use the `run.sh` file locally if you want to run the webapp with gunicorn handeling some of the stuff
+    1. Setup a venv and install the requirements from the requirements.txt, then install gunicorn `pip install gunicorn`
+    2. Run `./run.sh`, and the server should start up
+5. Go to `localhost:8080` to view the site
+6. Happy data viewing!
 
 
 ## Filesystem Explanation
