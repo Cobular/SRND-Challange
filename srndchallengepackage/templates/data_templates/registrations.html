@@ -5,9 +5,9 @@
             {% for event in registration_info %}
                     {{ event.region_name|catch_overall }}:
                     <ul>
-                        <li>Attendees registered: {{ event.num_checked_in }}</li>
-                        <li>Attendees checked in: {{ event.num_registered }}</li>
-                        <li>% No-Show: {{ "{:.2f}%".format(event.num_checked_in/event.num_registered) }}</li>
+                        <li>Attendees checked in: {{ event.num_checked_in }}</li>
+                        <li>Attendees registered: {{ event.num_registered }}</li>
+                        <li>% No-Show: {{ "{:.2f}%".format((1 - (event.num_checked_in/event.num_registered)) * 100) }}</li>
                     </ul>
                 <hr>
             {% endfor %}

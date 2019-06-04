@@ -2,9 +2,13 @@
 
 {% block panel_title %}Early Birds:{% endblock %}
 {% block panel_content %}
+    {% for region, attendees in earlybirds %}
+        {{ region }}:
         <ul>
-            {% for region, attendees in earlybirds.items() %}
-                <li> {{ region }}: {{ attendees[0] }}/{{ attendees[1] }}
-            {% endfor %}
+            <li>Early Birds: {{ attendees[0] }}</li>
+            <li>Total Registered: {{ attendees[1] }}</li>
+            <li>% Early Bird: {{ "{:.2f}%".format((1 - (attendees[0]/attendees[1])) * 100) }}</li>
         </ul>
+        <hr>
+    {% endfor %}
 {% endblock %}

@@ -6,7 +6,7 @@
 }
 
 body {
-    background: #E6E6E6 !important;
+    background: #FFFFFF !important;
 }
 
 .jumbotron {
@@ -52,7 +52,21 @@ h4.panel-title {
     flex-wrap: wrap;
 }
 
-.flex-container > [class*='col-']{
+.flex-container > [class*='col-'] {
     display: flex;
     flex-direction: column;
+}
+
+.panel.panel-default {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+.panel.panel-default::after {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.panel.panel-default::before {
+    opacity: 1;
 }

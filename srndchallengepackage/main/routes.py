@@ -14,6 +14,7 @@ def data():
     # Some stuff that's useful in a few places:
     region_list = (
         db.session.query(Reg.region_name)
+        .order_by(Reg.region_name.asc())
         .distinct(Reg.region_name)
         .group_by(Reg.region_name)
         .all()
@@ -48,6 +49,7 @@ def data():
             .count()
         )
         early_birds[event.region_name] = (early_bird_count, total_attendee_count)
+    early_birds = sorted(early_birds.items())
     print(early_birds)
 
     # ------------------------------------------------------------------------------------------------------------------
