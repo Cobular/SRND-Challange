@@ -70,3 +70,7 @@ h4.panel-title {
 .panel.panel-default::before {
     opacity: 1;
 }
+
+.early-bird-item {
+    width: 100%;
+}
