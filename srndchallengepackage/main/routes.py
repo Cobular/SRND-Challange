@@ -8,7 +8,10 @@ import datetime as dt
 
 @bp.route("/")
 def data():
-    from srndchallengepackage.models import Registrations as Reg, Sponsors
+    from srndchallengepackage.models import load_session
+    test_session = load_session()
+    from srndchallengepackage.models import Registrations as Reg
+    from srndchallengepackage.models import Sponsors
     from srndchallengepackage import db
 
     # Some stuff that's useful in a few places:

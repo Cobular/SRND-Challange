@@ -1,10 +1,16 @@
+import os
+
+from sqlalchemy import Table, Column, Integer
+from sqlalchemy.orm import mapper, sessionmaker
+
 from srndchallengepackage import db
 
 db.Model.metadata.reflect(db.engine)
+print(db.Model.__bases__)
 
 
 class Registrations(db.Model):
-    __table__ = db.Model.metadata.tables["registrations"]
+    pass
 
     # id = db.Column(db.Integer, primary_key=True)
     # first_name = db.Column(db.Text, nullable=False)
@@ -22,8 +28,23 @@ class Registrations(db.Model):
 
 
 class Sponsors(db.Model):
-    __table__ = db.Model.metadata.tables["sponsors"]
+    pass
 
     # name = db.Column(db.Text, nullable=False)
     # amount = db.Column(db.Integer, nullable=False)
     # region_name = db.Column(db.Text, nullable=False)
+
+
+def load_session():
+    moz_registrations = Table("moz_registrations", db.Model.metadata, autoload=True)
+    mapper(Registrations, moz_registrations)
+
+    moz_sponsors = Table("moz_sponsors", db.Model.metadata, Column("name", Integer, primary_key=True), autoload=True)
+    mapper(Sponsors, moz_sponsors)
+
+    session = sessionmaker(bind=db.engine)
+    session = session()
+    return session
+
+
+# db.session = sessionmaker(bind=db.Model.engine)
