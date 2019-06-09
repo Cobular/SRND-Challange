@@ -6,7 +6,7 @@ This web app displays the code day data in a SQLite database in a useful way, us
 
 This uses docker-compose for deployment, so first make sure you have both docker and docker-compose on your system. See the docker documentation for instructions.
 
-1. Make sure to set the `$SQLALCHEMY_DATABASE_URI` environmental variable **if** the database file is anywhere but in the root of the project (right next to this file). 
+1. Make sure to put the database file in the root directory of the project, right next to this file. The app expects it to be called `codeday.db3`. If you are getting this in a tarball from me, it will already be there, but it is not there if you are cloning this from github
 2. Just run `docker-compose up` and the service will start. 
 3. If you want to run the app outside the docker container w/ `flask run`, there are a few more steps:
     1. Setup a venv (`python3 -m venv ./venv`, `source venv/bin/activate`) and install the requirements from requirements.txt (`pip install -r requirements.txt`)

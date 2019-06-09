@@ -1,5 +1,5 @@
 /* This is where I can put custom css to overrite the defaults, if I can figure it out */
-@import url("https://f1.srnd.org/fonts/avenir-next/minimal.css");
+@import "avenir-next.css";
 
 * {
     font-family: "Avenir Next", sans-serif;

@@ -20,6 +20,8 @@ def data():
         .all()
     )
 
+    print(dir(Sponsors))
+
     # Calculate the ticket related info
     ticket_sales = (
         db.session.query(sum(Reg.ticket_cost)).scalar() * 0.01
