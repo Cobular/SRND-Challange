@@ -21,7 +21,7 @@ This uses docker-compose for deployment, so first make sure you have both docker
 
 ## Filesystem Explanation
 
-Generally speaking, I made this project in Flask and heavily used SQLAlchemy and Bootstrao.
+Generally speaking, I made this project in Flask and heavily used SQLAlchemy and Bootstrap.
 
 * A few things live in the root directory of the project: 
     * `config.py` stores some configuration for the flask app. 
@@ -46,5 +46,7 @@ Generally speaking, I made this project in Flask and heavily used SQLAlchemy and
             * `registrations.html` handles the display of the promo codes
     * `static/` contains the static files, like images and css.
         * `custom.css` contains the custom css that I use to override some of the bootstrap css in order to make the page look how I want
+        * `avenir-next.css` defines the avenir next font and is imported in `custom.css`
+        * `favicon-32x32` is the site favicon, it's a combination of a database logo and the codeday logo
 
 That's pretty much it, hope you enjoy!
