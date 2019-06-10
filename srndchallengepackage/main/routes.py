@@ -24,13 +24,14 @@ def data():
 
     # Calculate the ticket related info
     ticket_sales = (
-        db.session.query(sum(Reg.ticket_cost)).scalar() * 0.01
+        db.session.query(sum(Reg.ticket_cost)).scalar() / 100
     )  # Ticket costs in cents
     sponsor_bucks = (
-        db.session.query(sum(Sponsors.amount)).scalar() * 0.01
+        db.session.query(sum(Sponsors.amount)).scalar() / 100
     )  # Sponsors value is in cents
     food_costs = db.session.query(Reg).count() * 11  # Food cost = $11 per attendee
     net_costs = ticket_sales + sponsor_bucks - food_costs
+    all_cost_data = [ticket_sales, sponsor_bucks, food_costs, net_costs]
 
     # ------------------------------------------------------------------------------------------------------------------
 
@@ -103,7 +104,7 @@ def data():
 
     return render_template(
         "results.html",
-        netcosts=net_costs,
+        cost_data=all_cost_data,
         earlybirds=early_birds,
         promos=promo_data,
         registration_info=checked_registered_data,

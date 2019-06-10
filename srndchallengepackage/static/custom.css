@@ -70,3 +70,64 @@ h4.panel-title {
 .panel.panel-default::before {
     opacity: 1;
 }
+
+p.cost-breakdown {
+    display: inline;
+}
+
+@media (max-width: 768px) {
+    div.cost-breakdown {
+        text-align: center;
+        font-size: 16.5pt;
+        font-weight: 500;
+    }
+
+    div.cost-breakdown#net {
+        font-size: 37.125pt;
+        font-weight: 700;
+    }
+}
+
+@media (min-width: 768px) {
+    div.cost-breakdown {
+        text-align: center;
+        font-size: 16.5pt;
+        font-weight: 500;
+    }
+
+    div.cost-breakdown#net {
+        font-size: 55.67pt;
+        font-weight: 700;
+    }
+}
+
+@media (max-width: 576px) {
+    div#left, div#right {
+        width: 100%;
+    }
+
+    div.cost-breakdown {
+        text-align: center;
+        font-size: 11pt;
+        font-weight: 500;
+    }
+
+    div.cost-breakdown#net {
+        font-size: 24.75pt;
+        font-weight: 700;
+    }
+}
+
+@media (min-width: 576px) {
+
+}
+
+
+.green {
+    color: #84dcc6;
+    /*84dcc6*/
+}
+
+.red {
+    color: #FF686b;
+}

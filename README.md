@@ -1,6 +1,6 @@
 # Jake Cover's SRND Challenge
 
-This web app displays the code day data in a SQLite database in a useful way, using Flask and SQLAlchemy.
+This web app displays the code day data in a SQLite database in a useful way, using Flask and SQLAlchemy. Plus, it's reactive, scaling well to all device sizes!
 
 ## Instructions for Use
 

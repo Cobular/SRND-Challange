@@ -14,3 +14,11 @@ def add_overall(text: str):
         return text
     except UndefinedError:
         return "Overall"
+
+
+@app.template_filter("color_class_by_sign")
+def color_by_sign(num: float):
+    if num > 0:
+        return "green"
+    else:
+        return "red"

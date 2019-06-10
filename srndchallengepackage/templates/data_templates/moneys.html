@@ -2,5 +2,10 @@
 
 {% block panel_title %}Made/Lost:{% endblock %}
 {% block panel_content %}
-        {{ "${:,.2f}".format(netcosts/100) }}
+    <div class="cost-breakdown">
+        <p class="cost-breakdown green">{{ "${:,.2f}".format(cost_data[0]) }}</p> +
+        <p class="cost-breakdown green">{{ "${:,.2f}".format(cost_data[1]) }}</p> -
+        <p class="cost-breakdown red">{{ "${:,.2f}".format(cost_data[2]) }}</p>
+    </div>
+    <div class="cost-breakdown {{ cost_data[3]|color_class_by_sign }}" id="net">{{ "${:,.2f}".format(cost_data[3]) }}</div>
 {% endblock %}
