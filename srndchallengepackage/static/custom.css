@@ -75,19 +75,7 @@ p.cost-breakdown {
     display: inline;
 }
 
-@media (max-width: 768px) {
-    div.cost-breakdown {
-        text-align: center;
-        font-size: 16.5pt;
-        font-weight: 500;
-    }
-
-    div.cost-breakdown#net {
-        font-size: 37.125pt;
-        font-weight: 700;
-    }
-}
-
+/*Huge*/
 @media (min-width: 768px) {
     div.cost-breakdown {
         text-align: center;
@@ -101,6 +89,21 @@ p.cost-breakdown {
     }
 }
 
+/*Medium*/
+@media (max-width: 768px) {
+    div.cost-breakdown {
+        text-align: center;
+        font-size: 16.5pt;
+        font-weight: 500;
+    }
+
+    div.cost-breakdown#net {
+        font-size: 37.125pt;
+        font-weight: 700;
+    }
+}
+
+/*Small*/
 @media (max-width: 576px) {
     div#left, div#right {
         width: 100%;
@@ -118,6 +121,7 @@ p.cost-breakdown {
     }
 }
 
+/*Extra Small*/
 @media (min-width: 576px) {
 
 }
@@ -130,4 +134,9 @@ p.cost-breakdown {
 
 .red {
     color: #FF686b;
+}
+
+#pie_chart {
+    width: 100%;
+    height: auto;
 }

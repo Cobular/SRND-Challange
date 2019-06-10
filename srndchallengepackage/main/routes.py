@@ -1,3 +1,5 @@
+from random import sample
+
 from flask import render_template
 from sqlalchemy.sql import label
 from sqlalchemy.sql.functions import sum, count
@@ -14,20 +16,20 @@ def data():
     # Some stuff that's useful in a few places:
     region_list = (
         db.session.query(Reg.region_name)
-        .order_by(Reg.region_name.asc())
-        .distinct(Reg.region_name)
-        .group_by(Reg.region_name)
-        .all()
+            .order_by(Reg.region_name.asc())
+            .distinct(Reg.region_name)
+            .group_by(Reg.region_name)
+            .all()
     )
 
     print(dir(Sponsors))
 
     # Calculate the ticket related info
     ticket_sales = (
-        db.session.query(sum(Reg.ticket_cost)).scalar() / 100
+            db.session.query(sum(Reg.ticket_cost)).scalar() / 100
     )  # Ticket costs in cents
     sponsor_bucks = (
-        db.session.query(sum(Sponsors.amount)).scalar() / 100
+            db.session.query(sum(Sponsors.amount)).scalar() / 100
     )  # Sponsors value is in cents
     food_costs = db.session.query(Reg).count() * 11  # Food cost = $11 per attendee
     net_costs = ticket_sales + sponsor_bucks - food_costs
@@ -43,13 +45,13 @@ def data():
         )
         early_bird_count = (
             db.session.query(Reg)
-            .filter(
+                .filter(
                 Reg.region_name == event[0],
                 Reg.registered_at
                 <= dt.datetime.fromtimestamp(1550318400) - dt.timedelta(weeks=2),
             )
-            .limit(total_attendee_count * 0.4)
-            .count()
+                .limit(total_attendee_count * 0.4)
+                .count()
         )
         early_birds[event.region_name] = (early_bird_count, total_attendee_count)
     early_birds = sorted(early_birds.items())
@@ -63,18 +65,26 @@ def data():
         db.session.query(
             Reg.promo_code, count(1).label("num_uses")
         )  # Returns code:count, does count none
-        .group_by(Reg.promo_code)
-        .order_by(
+            .group_by(Reg.promo_code)
+            .order_by(
             count(Reg.promo_code).desc()
-        )  # does NOT count none here, so none iwll always be last
-        .all()
+        )  # does NOT count none here, so none will always be last
+            .all()
     )
+
+    full_colors = [
+        "#3F97CC", "#48DCC6", "#FF686B", "#E6E6E6",
+        "#F7464A", "#46BFBD", "#FDB45C", "#FEDCBA",
+        "#ABCDEF", "#DDDDDD", "#ABCABC", "#4169E1",
+        "#C71585", "#FF4500", "#FEDCBA", "#46BFBD", ]
 
     promo_code_names = []
     promo_code_uses = []
     for element in promo_data:
-        promo_code_names.append(element.promo_code)
-        promo_code_uses.append(element.num_uses)
+        promo_code_names.append(str(element.promo_code))
+        promo_code_uses.append(int(element.num_uses))
+    selected_colors = sample(full_colors, len(promo_code_names))
+    promo_chart_data = [promo_code_names, selected_colors, promo_code_uses]
     print(promo_data)
 
     # ------------------------------------------------------------------------------------------------------------------
@@ -90,13 +100,13 @@ def data():
     )
 
     checked_registered_data = (
-        checked_registered_data
-        + db.session.query(
-            Reg.first_name,  # Need to get the text "Overall" into this field
-            count(Reg.checked_in_at).label("num_checked_in"),
-            count(Reg.registered_at).label("num_registered"),
-        ).all()
-    )
+            checked_registered_data
+            + db.session.query(
+                Reg.first_name,  # Need to get the text "Overall" into this field
+                count(Reg.checked_in_at).label("num_checked_in"),
+                count(Reg.registered_at).label("num_registered"),
+            ).all()
+        )
 
     print(checked_registered_data)
 
@@ -108,4 +118,5 @@ def data():
         earlybirds=early_birds,
         promos=promo_data,
         registration_info=checked_registered_data,
+        promo_chart_data=promo_chart_data,
     )

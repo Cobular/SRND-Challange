@@ -3,4 +3,4 @@ from srndchallengepackage import create_app
 
 app = create_app()
 
-from srndchallengepackage.main.util import filters
+from srndchallengepackage.main.util import jinja_tools

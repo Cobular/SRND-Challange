@@ -1,6 +1,6 @@
 # Jake Cover's SRND Challenge
 
-This web app displays the code day data in a SQLite database in a useful way, using Flask and SQLAlchemy. Plus, it's reactive, scaling well to all device sizes!
+This web app displays the code day data in a SQLite database in a useful way, using Flask and SQLAlchemy. Plus, it's reactive, scaling well to all device sizes, and has a pretty pie chart!
 
 ## Instructions for Use
 
@@ -12,7 +12,7 @@ This uses docker-compose for deployment, so first make sure you have both docker
     1. Setup a venv (`python3 -m venv ./venv`, `source venv/bin/activate`) and install the requirements from requirements.txt (`pip install -r requirements.txt`)
     2. Set the `$FLASK_APP` environmental variable to `run` so the next command will know where to look to start the aoo
     3. Run the command `flask run`. You can add the optional arguments `-h localhost` and `-p 8080` to the end of the command to change the address and port the app is listening on.  
-4. You can also use the `run.sh` file locally if you want to run the webapp with gunicorn handeling some of the stuff
+4. You can also use the `run.sh` file locally if you want to run the webapp with gunicorn handling some of the stuff
     1. Setup a venv and install the requirements from the requirements.txt, then install gunicorn `pip install gunicorn`
     2. Run `./run.sh`, and the server should start up
 5. Go to `localhost:8080` to view the site

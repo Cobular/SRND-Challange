@@ -7,4 +7,35 @@
             <li>{{ promo[0] }}: {{ promo[1] }}</li>
         {% endfor %}
     </ol>
+    <canvas id="pie_chart"></canvas>
+    <script>
+        var donutOptions = {
+            cutoutPercentage: 75,
+            legend: {
+                position: 'bottom',
+                labels: {
+                    pointStyle: 'circle',
+                    usePointStyle: true
+                }
+            }
+        };
+        var chDonutData1 = {
+            labels: {{ promo_chart_data[0]|safe }},
+            datasets: [
+                {
+                    backgroundColor: {{ promo_chart_data[1]|safe }},
+                    borderWidth: 0,
+                    data: {{ promo_chart_data[2]|safe }}
+                }
+            ]
+        };
+        var chDonut1 = document.getElementById("pie_chart");
+        if (chDonut1) {
+            new Chart(chDonut1, {
+                type: 'pie',
+                data: chDonutData1,
+                options: donutOptions
+            });
+        }
+    </script>
 {% endblock %}
