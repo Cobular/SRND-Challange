@@ -22,3 +22,6 @@ def color_by_sign(num: float):
         return "green"
     else:
         return "red"
+
+
+app.jinja_env.globals.update(zip=zip)

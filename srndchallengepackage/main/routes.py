@@ -73,17 +73,17 @@ def data():
     )
 
     full_colors = [
-        "#3F97CC", "#48DCC6", "#FF686B", "#E6E6E6",
-        "#F7464A", "#46BFBD", "#FDB45C", "#FEDCBA",
-        "#ABCDEF", "#DDDDDD", "#ABCABC", "#4169E1",
-        "#C71585", "#FF4500", "#FEDCBA", "#46BFBD", ]
+        "#3F97CC", "#48DCC6", "#FF686B", "#C71585",
+        "#E6E6E6", "#4169E1", "#F7464A", "#46BFBD",
+        "#FDB45C", "#FEDCBA", "#ABCDEF", "#DDDDDD",
+        "#ABCABC", "#FF4500", "#FEDCBA", "#46BFBD", ]
 
     promo_code_names = []
     promo_code_uses = []
     for element in promo_data:
         promo_code_names.append(str(element.promo_code))
         promo_code_uses.append(int(element.num_uses))
-    selected_colors = sample(full_colors, len(promo_code_names))
+    selected_colors = full_colors[0:len(promo_code_names) - 1]
     promo_chart_data = [promo_code_names, selected_colors, promo_code_uses]
     print(promo_data)
 
@@ -95,18 +95,18 @@ def data():
             count(Reg.checked_in_at).label("num_checked_in"),
             count(Reg.registered_at).label("num_registered"),
         )
-        .group_by(Reg.region_name)
-        .all()
+            .group_by(Reg.region_name)
+            .all()
     )
 
     checked_registered_data = (
             checked_registered_data
             + db.session.query(
-                Reg.first_name,  # Need to get the text "Overall" into this field
-                count(Reg.checked_in_at).label("num_checked_in"),
-                count(Reg.registered_at).label("num_registered"),
-            ).all()
-        )
+        Reg.first_name,  # Need to get the text "Overall" into this field
+        count(Reg.checked_in_at).label("num_checked_in"),
+        count(Reg.registered_at).label("num_registered"),
+    ).all()
+    )
 
     print(checked_registered_data)
 

@@ -3,8 +3,8 @@
 {% block panel_title %}Promos:{% endblock %}
 {% block panel_content %}
     <ol>
-        {% for promo in  promos %}
-            <li>{{ promo[0] }}: {{ promo[1] }}</li>
+        {% for promo, color in zip(promos, promo_chart_data[1]) %}
+            <li style="color: {{ color }}" class="promo-li">{{ promo[0] }}: {{ promo[1] }}</li>
         {% endfor %}
     </ol>
     <canvas id="pie_chart"></canvas>

@@ -140,3 +140,7 @@ p.cost-breakdown {
     width: 100%;
     height: auto;
 }
+
+.promo-li {
+    font-weight: 500;
+}
